@@ -57,8 +57,7 @@ def divide_img():
         contador += 1
 
 
-def escalado_inicial(path_imag
-nes,path_imagenes_t,path_save_files,path_save_filest):
+def escalado_inicial(path_imagenes,path_imagenes_t,path_save_files,path_save_filest):
  
     for f in os.listdir(path_imagenes):
         if f.endswith('.jpg'):
