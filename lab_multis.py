@@ -192,7 +192,10 @@ def limites_ancho_alto(alto,alto_deseado,ancho,ancho_deseado):
     ############################################### inicio ###########################################
 def labels_multi():
     path_imagenes = '/content/prueba_data/'
+    
     global path_save_files,w,h, path_save_filest,grid,w_total,h_total,indicep,final_respaldo, final, keyn
+    global limites_alto, limites_ancho, puntos, puntos_x, puntos_y, w_total, h_total, num_objeto, n,c, cont,paso,objeto_region
+    global rec_x,aux,x,y,bb,ancho_deseado, alto_deseado,objeto,texto_m,imgcrop
     #grid = int(input('Ingrese factor:')) # maxima multiplo de 1 - 9
     gridl = [2,3,4,5,6,7,8,9]
 
