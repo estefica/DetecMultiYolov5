@@ -1,6 +1,6 @@
 import os, random,shutil,cv2
 def divide_img():
-    #print('ESTO DEBERIA HACERLO SIEMPRE Y CUANDO ME LLAMEN')
+
     src_dir = '/content/random/images/'
     train_path ='/content/train/images/'
     dst_dir = ['/content/train/', '/content/valid/','/content/test/']
@@ -57,29 +57,21 @@ def divide_img():
         contador += 1
 
 
-def escalado_inicial(path_imagenes,path_imagenes_t,path_save_files,path_save_filest):
-    #print('\nESCALADO INICIAL..!!! BROU\n')
-    #print(os.listdir(path_imagenes))
+def escalado_inicial(path_imag
+nes,path_imagenes_t,path_save_files,path_save_filest):
+ 
     for f in os.listdir(path_imagenes):
         if f.endswith('.jpg'):
-            #print('si hay jpg')
-            #print(f)
-            #print('\n\n')
+            
             fn, ftext = os.path.splitext(f)
-            #print(path_imagenes + fn + '.txt')
-            #print(os.path.exists(path_imagenes + fn + '.txt'))
+            
             if os.path.exists(path_imagenes + fn + '.txt'):
-                #print(fn)
-                #print('ENTRE SI EXISTE TXT')
-                #print('esta deberia ser la direccion:\n')
-                #print(path_imagenes + f'{fn}.jpg')
+                
                 img = cv2.imread(path_imagenes + f'{fn}.jpg')
-                #print('pase el cv2')
+                
                 imgResize = cv2.resize(img, (920, 720))
-                #print('\n pase el resize \n')
-                #print(path_save_files + f'{fn}.jpg')
+
                 cv2.imwrite(path_save_files + f'{fn}.jpg', imgResize)
-                #print('imwrite')
+
                 shutil.copy(path_imagenes_t + fn + '.txt', path_save_filest + f'{fn}.txt')
-                #print('shutilcopy')
 
