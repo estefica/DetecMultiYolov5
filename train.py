@@ -489,6 +489,7 @@ if __name__ == '__main__':
     parser.add_argument('--bbox_interval', type=int, default=-1, help='Set bounding-box image logging interval for W&B')
     parser.add_argument('--save_period', type=int, default=-1, help='Log model after every "save_period" epoch')
     parser.add_argument('--artifact_alias', type=str, default="latest", help='version of dataset artifact to be used')
+    parser.add_argument('--preprocess',action='store_true',help='Files already created')
     opt = parser.parse_args()
 
     # Set DDP variables
@@ -531,6 +532,13 @@ if __name__ == '__main__':
     # Hyperparameters
     with open(opt.hyp) as f:
         hyp = yaml.load(f, Loader=yaml.SafeLoader)  # load hyps
+    
+    #preprocess:
+    if opt.preprocess:
+      #main1()
+      print('entre a la opcion de preprocesado')
+    else:
+        print('A path already exists or it is not defined')
 
     # Train
     logger.info(opt)
