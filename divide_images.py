@@ -26,13 +26,13 @@ def divide_img(imagen_faltantes):
     numero_img_random = 2  # numero de imagenes random que escogere por cada imagen del dataset base
     data_setbase = os.listdir(train_path)  # LISTA DE IMAGENES TRAIN
     file_list = os.listdir(src_dir)  # Lista total de imgs creadas con el factor multiplicativo
-    print('Cantidad de donde escoger: ' + str(len(file_list)))
+    #print('Cantidad de donde escoger: ' + str(len(file_list)))
 
     # TRAIN DATASET
     nombre_imagen = []
     bandera_faltantes = int(len(file_list)) - numero_img_random
     iteraciones_faltantes = abs(bandera_faltantes)
-    print(f'!!! bandera faltantes:{bandera_faltantes}')
+    #print(f'!!! bandera faltantes:{bandera_faltantes}')
 
     if bandera_faltantes > 0 or imagen_faltantes == 0:
         for o_img in range(numero_img_random):
@@ -43,13 +43,13 @@ def divide_img(imagen_faltantes):
                             dst_dir[0] + files_dst[1] + a.replace('.jpg', '.txt'))
                 file_list.remove(a)
             else:
-                print('entre raaaroo')
+                #print('entre raaaroo')
                 numero_img_random += 1
         eval_n_images = 1
         test_n_images = random.choice([0, 1])
         division_imagenes = [eval_n_images, test_n_images]
         contador = 1
-        print(f'Cantidad de donde escoger para eval : {len(os.listdir(src_dir))} ')
+        #print(f'Cantidad de donde escoger para eval : {len(os.listdir(src_dir))} ')
 
         try:
             for i in division_imagenes:
