@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 from threading import Thread
 import lab_multis
+import one_shot_label
 import numpy as np
 import torch.distributed as dist
 import torch.nn as nn
@@ -536,6 +537,7 @@ if __name__ == '__main__':
     #preprocess:
     if opt.preprocess:
       lab_multis.labels_multi()
+      one_shot_label.one_shot_imagen()
       print('entre a la opcion de preprocesado')
     else:
         print('A path already exists or it is not defined')
