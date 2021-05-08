@@ -54,7 +54,7 @@ def divide_img(imagen_faltantes):
         try:
             for i in division_imagenes:
                 for j in range(i):
-                    print(f'entre a {i}')
+                    #print(f'entre a {i}')
                     file_list = os.listdir(src_dir)
                     a = random.choice(file_list)
                     fn, ftext = os.path.splitext(a)
