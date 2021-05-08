@@ -255,7 +255,7 @@ def labels_multi():
                 fn, ftext = os.path.splitext(f)
                 img = cv2.imread(path_imagenes + f'{fn}.jpg')
                 grid = random.choice([g for g in range(2, int(img.shape[1] / ancho_deseado) + 1)])
-                print(f'\n  grid escogifo:{grid}')
+                #print(f'\n  grid escogifo:{grid}')
                 # path_save_files = f'C:/Users/carit/PycharmProjects/tutorial/{fn}/{fn}_'
                 if grid == 1:
                     path_save_files = f'/content/train/images/{fn}_{grid}'
@@ -284,8 +284,8 @@ def labels_multi():
                 # print(os.path.exists(path_imagenes+fn+'.txt'))
                 # print('\n\n')
                 if os.path.exists(path_imagenes + fn + '.txt'):
-                    print(f'\n **** soy el index: {ff} ***\n')
-                    print('IMG escogida' + fn + '\n\n')
+                    #print(f'\n **** soy el index: {ff} ***\n')
+                    #print('IMG escogida' + fn + '\n\n')
                     try:
 
                         f = open(path_imagenes + fn + '.txt')
@@ -633,13 +633,13 @@ def labels_multi():
                             print('NUMERO DE PARAMETROS INCORRECTO')
                     except Exception as e:
                         print(e)
-                        print(f'archivo:{fn}.txt mal formato')
+                        #print(f'archivo:{fn}.txt mal formato')
 
-                    print('--------')
+                    #print('--------')
 
-                    print(img_faltantes)
-                    print('img-falta:')
-                    print(img_f)
+                    #print(img_faltantes)
+                    #print('img-falta:')
+                    #print(img_f)
                 # if img_f <= 0:
                 # print('REPITO LA IMAGEN')
                 # check = 1
@@ -653,11 +653,11 @@ def labels_multi():
                     print(f'no existe archivo{fn}.txt ')
 
             if img_f <= 0:
-                print('REPITO LA IMAGEN')
+                #print('REPITO LA IMAGEN')
                 check = 1
                 img_faltantes = 0
             if img_f > 0:
-                print('PASO A OTRA IMAGEN')
+                #print('PASO A OTRA IMAGEN')
                 img_faltantes = 1
                 check = 0
 
