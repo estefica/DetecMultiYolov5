@@ -2,8 +2,10 @@ import cv2
 import numpy as np
 import lab_multis as lm
 
-from utils.datasets import datasets as dt
-from utils.general import general as gn
+from utils.datasets import letterbox
+from utils.general import check_img_size
+
+
 #import general as gn
 #import datasets as dt
 import os
@@ -62,11 +64,11 @@ def one_shot_imagen():
                         #print(labels)
                         #print(f'hreal:{h_real}')
                         #print(f'hmod:{h_mod}')
-                        h_realn = gn.check_img_size(int(h_mod),32)
+                        h_realn = check_img_size(int(h_mod),32)
                         #print(f'imagen shape inicial:{img.shape}')
                         #print(h_realn)
-                        dt.letterbox(img,32)
-                        img_t = dt.letterbox(img_t, (h_realn,h_realn), stride=32)[0]
+                        letterbox(img,32)
+                        img_t = letterbox(img_t, (h_realn,h_realn), stride=32)[0]
                         #print('nueva shape imagen:')
                         #print(img_t.shape)
                         limy2 = cy_real + int(img_t.shape[0]/2)
