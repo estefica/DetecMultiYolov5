@@ -237,7 +237,7 @@ def labels_multi():
             pass
 
     # print('DEBERIA HACER EL ESCALADO A 1')
-    # divide_images.escalado_inicial(path_ima, path_ima_t, path_s_files, path_s_filest)  # escalado inicial 960*720
+    divide_images.escalado_inicial(path_ima, path_ima_t, path_s_files, path_s_filest)  # escalado inicial 960*720
     # grid_rango = int()
     lista_total_data = os.listdir(path_imagenes)
     for ff in range(len(lista_total_data)):
