@@ -58,6 +58,8 @@ def crear_doc_texto(b_f1x, b_f1y, b_f4x, b_f4y, nombre, lleno1, lleno2, limx, li
     if 0 <= cx <= 1 and 0 <= cy <= 1:
 
         if wabs >= 0.3 * w_total[indicep] and habs >= 0.25 * h_total[indicep]:
+            w = 0.95*w
+            h = 0.95*h
             final_alt = '{} {} {} {} {}'.format(int(objeto), cx, cy, w, h)
             # print(nombre.format(lleno1, lleno2))
 
