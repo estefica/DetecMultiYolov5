@@ -1,5 +1,5 @@
 import numpy as np
-import cv2, os, divide_images, math, random
+import cv2, os, divide_images, math, random,shutil
 
 
 # Funciones cambio label YOLO to RECTANGLE, (p1x,p1y) :(s1x,s1y)
@@ -210,7 +210,8 @@ def labels_multi():
     global path_save_files, w, h, path_save_filest, grid, w_total, h_total, indicep, final_respaldo, final, keyn
     global limites_alto, limites_ancho, puntos, puntos_x, puntos_y, w_total, h_total, num_objeto, n, c, cont, paso, objeto_region
     global rec_x, aux, x, y, bb, ancho_deseado, alto_deseado, objeto, texto_m, imgcrop
-    global img_faltantes
+    global img_faltantes, img_f,checkingI,val_test_check
+
     # grid = int(input('Ingrese factor:')) # maxima multiplo de 1 - 9
 
     # gridl = [2,3,4,5,6,7,8,9]----ESTOY AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     <<<<---
@@ -221,9 +222,14 @@ def labels_multi():
     path_ima_t = '/content/prueba_data/'
     path_s_files = '/content/train/images/'
     path_s_filest = '/content/train/labels/'
+    src_dir = '/content/random/images/'
+    src_labels = '/content/random/labels/'
     alto_deseado = 720
     ancho_deseado = 960
     img_faltantes = 1
+    img_f = 1
+    checkingI = 1
+    val_test_check = 0
 
     for i in dst_dir:
         try:
@@ -244,7 +250,22 @@ def labels_multi():
     lista_total_data = os.listdir(path_imagenes)
     for ff in range(len(lista_total_data)):
         check = 1
+        #print(ff)
         img_faltantes = 1
+        f = lista_total_data[ff]
+        if f.endswith('.jpg'):
+          fn, ftext = os.path.splitext(f)
+          img = cv2.imread(path_imagenes + f'{fn}.jpg')
+          checkingI = 1
+          val_test_check = 0
+          #print('----------------!!!!!!!!!!!!new--------------------------------')
+          #print(fn)
+
+
+
+
+
+
         while check == 1:
             f = lista_total_data[ff]
             # print('\n')
@@ -254,8 +275,7 @@ def labels_multi():
             # print(img_faltantes)
             if f.endswith('.jpg'):
                 # print(f'\n soy ff:{ff}')
-                fn, ftext = os.path.splitext(f)
-                img = cv2.imread(path_imagenes + f'{fn}.jpg')
+                
                 grid = random.choice([g for g in range(2, int(img.shape[1] / ancho_deseado) + 1)])
                 #print(f'\n  grid escogifo:{grid}')
                 # path_save_files = f'C:/Users/carit/PycharmProjects/tutorial/{fn}/{fn}_'
@@ -296,7 +316,7 @@ def labels_multi():
                                           dtype=np.float32)  # labels
                         # print(labels)
                         if labels.shape[1] == 5:
-                            print('Numero de objetos encontrados : {}'.format(labels.shape[0]))
+                            #print('Numero de objetos encontrados : {}'.format(labels.shape[0]))
                             #####################################
                             resolucion_original_ancho = 960 * grid  # no mayor a 10
                             resolucion_original_alto = int(
@@ -628,7 +648,7 @@ def labels_multi():
                                                                     imgcrop)
                                                                 imagen_numero += 1
 
-                            img_f = divide_images.divide_img(img_faltantes)
+                            img_f,checkingI,val_test_check = divide_images.divide_img(img_faltantes,checkingI,val_test_check)
 
 
                         else:
@@ -662,5 +682,9 @@ def labels_multi():
                 #print('PASO A OTRA IMAGEN')
                 img_faltantes = 1
                 check = 0
-
+            
+            shutil.rmtree(src_dir)
+            os.mkdir(src_dir)
+            shutil.rmtree(src_labels)
+            os.mkdir(src_labels)
 
