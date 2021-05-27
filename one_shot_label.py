@@ -4,23 +4,27 @@ import lab_multis as lm
 
 from utils.datasets import letterbox
 from utils.general import check_img_size
-
+path_imagenes = '/content/prueba_data/' #'C:/Users/carit/PycharmProjects/tutorial/data_2/'#'C:/Users/carit/Documents/L377506/L377506/oblique/'#
+path_save_images = '/content/train/images/'#'C:/Users/carit/PycharmProjects/tutorial/carpetadata/'#
+path_save_labels = '/content/train/labels/'
+new_center = 0
 
 #import general as gn
 #import datasets as dt
 import os
 
 
-def crear_texto(img,objeto,w_real,h_real,name,cx,cy,boxes):
-    h_label =h_real/img.shape[0]
-    w_label = w_real / img.shape[1]
+
+def crear_texto(img,objeto,w_real,h_real,name,cx,cy,boxes,prox):
+    h_label =h_real/(prox*img.shape[0])
+    w_label = w_real / (prox*img.shape[1])
     texto_label = '{} {} {} {} {}'.format(objeto, cx, cy, w_label, h_label)
     doc = open(path_save_labels+name+str(boxes)+'.txt', 'w')
     doc.write(texto_label)
 
 #C:\Users\carit\PycharmProjects\tutorial\datasets.py
 #C:\Users\carit\PycharmProjects\tutorial\data_2
-def one_shot_imagen():
+def one_shot_imagen(prox):
     path_imagenes = '/content/prueba_data/' #'C:/Users/carit/PycharmProjects/tutorial/data_2/'#'C:/Users/carit/Documents/L377506/L377506/oblique/'#
     path_save_images = '/content/train/images/'#'C:/Users/carit/PycharmProjects/tutorial/carpetadata/'#
     path_save_labels = '/content/train/labels/'
@@ -71,13 +75,13 @@ def one_shot_imagen():
                         img_t = letterbox(img_t, (h_realn,h_realn), stride=32)[0]
                         #print('nueva shape imagen:')
                         #print(img_t.shape)
-                        limy2 = cy_real + int(img_t.shape[0]/2)
+                        limy2 = cy_real + int(prox*(img_t.shape[0]/2))
                         #print(f'limy1{limy2} = {cy_real} + {int(img_t.shape[0] / 2)}')
-                        limy1 = cy_real - int(img_t.shape[0]/2)
+                        limy1 = cy_real - int(prox*(img_t.shape[0]/2))
                         #print(f'limy1{limy1} = {cy_real} - {int(img_t.shape[0]/2)}')
-                        limx2 = cx_real + int(img_t.shape[1] / 2)
+                        limx2 = cx_real + int(prox*(img_t.shape[1] / 2))
                         #print(f'limx2 {limx2}= {cx_real} + {int(img_t.shape[1] / 2)}')
-                        limx1 = cx_real - int(img_t.shape[1] / 2)
+                        limx1 = cx_real - int(prox*(img_t.shape[1] / 2))
                         #print(f'limx1 {limx1}= {cx_real} - {int(img_t.shape[1] / 2)}')
                         cx_txt = 0.5
                         cy_txt = 0.5
