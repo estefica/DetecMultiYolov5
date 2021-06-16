@@ -26,7 +26,7 @@ def divide_img(imagen_faltantes,checI,val_test_check):
                 pass
                 # print(e)
 
-    numero_img_random = 2  # numero de imagenes random que escogere por cada imagen del dataset base
+    numero_img_random = 7  # numero de imagenes random que escogere por cada imagen del dataset base
     data_setbase = os.listdir(train_path)  # LISTA DE IMAGENES TRAIN
     file_list = os.listdir(src_dir)  # Lista total de imgs creadas con el factor multiplicativo
     #print('Cantidad de donde escoger: ' + str(len(file_list)))
